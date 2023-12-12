@@ -16,12 +16,13 @@ const Login = () => {
 
     const onSubmit = async (dataa) => {
         try {
-            const { data, error } = await userLogin(dataa)
+            // const { data, error } = await userLogin(dataa)
             const { data: responseData, error: responseError } = await userLogin(dataa);
             if (responseError) {
                 console.log(responseError, 'login response error');
             } else {
-                dispatch(setUser({ accessToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6Ikphc3ByZWV0IHNpbmdoIiwicm9sZXMiOlsidXNlciJdfQ.c2Mc4z9SKedAj1eh1Ka9XP9QWsPDW1bgtaeROlXwYZg' }));
+                dispatch(setUser({ accessToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6Ikphc3ByZWV0IHNpbmdoIiwicm9sZXMiOlsidXNlciJdfQ.c2Mc4z9SKedAj1eh1Ka9XP9QWsPDW1bgtaeROlXwYZg', responseData }));
+                dispatch(setToken('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6Ikphc3ByZWV0IHNpbmdoIiwicm9sZXMiOlsidXNlciJdfQ.c2Mc4z9SKedAj1eh1Ka9XP9QWsPDW1bgtaeROlXwYZg'));
                 navigate('dashboard');
             }
 
@@ -29,7 +30,7 @@ const Login = () => {
             console.log(error, 'error login api hit')
         }
     };
-    
+
     return (
         <div>
             {/* <button onClick={test}>login button demo</button> */}
